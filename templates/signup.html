@@ -2,58 +2,48 @@
 
 {% block content %}
 <div class ="container">
-    <div class="row">
-        <div class="col-sm-12">
-            <h2>Create an account</h2>
-            <form method="POST" action="/signup">
-                {{ form.hidden_tag() }}
-                <div class="form-group">
-                    {{form.first_name.label }}
-                        {% if form.first_name.errors %}
-                            {% for error in form.first_name.errors %}
-                                <p class="error-message">
-                                    {{ error }}
-                                </p>
-                            {% endfor %}
-                        {% endif %}
-                    {{form.first_name }}
-                </div>
-                <div class="form-group">
-                    {{form.last_name.label }}
-                        {% if form.last_name.errors %}
-                            {% for error in form.last_name.errors %}
-                                <p class="error-message">
-                                    {{ error }}
-                                </p>
-                            {% endfor %}
-                        {% endif %}
-                    {{form.last_name }}
-                </div>
-                <div class="form-group">
-                    {{form.email.label }}
-                        {% if form.email.errors %}
-                            {% for error in form.email.errors %}
-                                <p class="error-message">
-                                    {{ error }}
-                                </p>
-                            {% endfor %}
-                        {% endif %}
-                    {{form.email }}
-                </div>
-                <div class="form-group">
-                    {{form.password.label }}
-                        {% if form.password.errors %}
-                            {% for error in form.password.errors %}
-                                <p class="error-message">
-                                    {{ error }}
-                                </p>
-                            {% endfor %}
-                        {% endif %}
-                    {{form.password }}
-                </div>
-                {{ form.submit(class="btn-primary") }}
-            </form>
+    <h2>Create an account:</h2>
+    <br>
+    <form method="POST" action="/signup" class="form-horizontal">
+        {{ form.hidden_tag() }}
+        <div class="form-group {% if form.first_name.errors %} has-error {% endif %}">
+        {{form.first_name.label(class="col-sm-2")}}
+        <div class="col-sm-5">
+        {{ form.first_name(placeholder="Paul", class="form-control") }}
         </div>
-    </div>
+        <p class="col-sm-5 help-block">
+        {{ form.first_name.errors[0] }}
+        </div>
+        <div class="form-group {% if form.last_name.errors %} has-error {% endif %}">
+        {{form.last_name.label(class="col-sm-2")}}
+        <div class="col-sm-5">
+        {{ form.last_name(placeholder="Williams", class="form-control") }}
+        </div>
+        <p class="col-sm-5 help-block">
+        {{ form.last_name.errors[0] }}
+        </div>
+        <div class="form-group {% if form.email.errors %} has-error {% endif %}">
+        {{form.email.label(class="col-sm-2")}}
+        <div class="col-sm-5">
+        {{ form.email(placeholder="paul.williams@dankmemes.com", class="form-control") }}
+        </div>
+        <p class="col-sm-5 help-block">
+        {{ form.email.errors[0] }}
+        </div>
+        <div class="form-group {% if form.password.errors %} has-error {% endif %}">
+        {{form.password.label(class="col-sm-2")}}
+        <div class="col-sm-5">
+        {{ form.password(placeholder="Min. 8 Characters", class="form-control") }}
+        </div>
+        <p class="col-sm-5 help-block">
+        {{ form.password.errors[0] }}
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-5">
+                {{ form.submit(class="btn btn-default") }}
+            </div>
+        </div>
+    </form>
+    <hr>
 </div>
 {% endblock %}

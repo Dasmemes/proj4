@@ -8,7 +8,6 @@
 
         <!-- Optional Bootstrap theme -->
         <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}">
-
     </head>
 
     <body>
@@ -37,5 +36,14 @@
     <hr>
     {% block content %}
     {% endblock %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <footer>
+                    <p>&copy; Proj4</p>
+                </footer>
+            </div>
+        </div>
+    </div>
     </body>
 </html>
