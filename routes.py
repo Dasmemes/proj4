@@ -23,7 +23,7 @@ def about():
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     if "email" in session:
-        return redirect(url_for("home"))
+        return redirect(url_for("account"))
     form = SignupForm()
     if request.method == "POST":
 
@@ -35,7 +35,7 @@ def signup():
             db.session.commit()
 
             session["email"] = newuser.email
-            return redirect(url_for("home"))
+            return redirect(url_for("account"))
 
     elif request.method == "GET":
         return render_template("signup.html", form=form)
@@ -44,7 +44,7 @@ def signup():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if "email" in session:
-        return redirect(url_for("home"))
+        return redirect(url_for("account"))
     form = LoginForm()
 
     if request.method == "POST":
@@ -57,7 +57,7 @@ def login():
             user = User.query.filter_by(email=email).first()
             if user is not None and user.check_password(password):
                 session["email"] = form.email.data
-                return redirect(url_for("home"))
+                return redirect(url_for("account"))
             else:
                 return redirect((url_for("login")))
     elif request.method == "GET":
@@ -69,11 +69,11 @@ def logout():
     return redirect(url_for("index"))
 
 
-@app.route("/home")
-def home():
+@app.route("/account")
+def account():
     if "email" not in session:
         return redirect((url_for("login")))
-    return render_template("home.html")
+    return render_template("account.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
