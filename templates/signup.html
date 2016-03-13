@@ -3,7 +3,6 @@
 {% block content %}
 <div class ="container">
     <h2>Create an account:</h2>
-    <br>
     <form method="POST" action="/signup" class="form-horizontal">
         {{ form.hidden_tag() }}
         <div class="form-group {% if form.first_name.errors %} has-error {% endif %}">
