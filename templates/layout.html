@@ -9,8 +9,6 @@
         <!-- Optional Bootstrap theme -->
         <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}">
     </head>
-
-    <body>
     <nav id="myNavbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="container">
@@ -33,6 +31,7 @@
             </div>
         </div>
     </nav>
+    <body>
     <hr>
     {% block content %}
     {% endblock %}
